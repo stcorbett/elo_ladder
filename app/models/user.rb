@@ -34,4 +34,10 @@ class User < ActiveRecord::Base
     (1 / (1 + 10**((other.rating - self.rating)/400.0))).to_f
   end
   
+  def new_rating_against(other, win = true)
+    score = win ? 1 : 0
+    k = self.rating > 2200 ? 16 : 32
+    (self.rating + k * (score - expected_score_against(other))).to_i
+  end
+  
 end

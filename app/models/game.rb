@@ -18,4 +18,11 @@ class Game < ActiveRecord::Base
   
   validates_presence_of :winner_id, :loser_id
   
+  def after_create
+    winner.rating = winner.new_rating_against(loser, true)
+    loser.rating =  loser.new_rating_against(winner, false)
+    winner.save
+    loser.save
+  end
+  
 end
