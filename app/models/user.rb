@@ -14,6 +14,7 @@
 #  current_login_at  :datetime
 #  last_login_ip     :string(255)
 #  current_login_ip  :string(255)
+#  name              :string(255)
 #  rating            :integer         default(1600)
 #  created_at        :datetime
 #  updated_at        :datetime

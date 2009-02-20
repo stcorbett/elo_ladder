@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_login_ip
       t.string :current_login_ip
       
+      t.string :name
       t.integer :rating, :default => 1600
 
       t.timestamps
