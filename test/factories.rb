@@ -16,3 +16,8 @@ Factory.define :user do |u|
   u.password              "password"
   u.password_confirmation "password"
 end
+
+Factory.define :game do |g|
+  g.winner {|a| a.association(:user) }
+  g.loser  {|a| a.association(:user) }
+end

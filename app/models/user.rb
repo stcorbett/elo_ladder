@@ -21,5 +21,12 @@
 #
 
 class User < ActiveRecord::Base
-  acts_as_authentic
+
+  has_many :won_games, :class_name => "Game", :foreign_key => "winner_id"
+  has_many :lost_games, :class_name => "Game", :foreign_key => "loser_id"
+  
+  validates_presence_of :name
+  
+  acts_as_authentic :login_field => :email
+  
 end
