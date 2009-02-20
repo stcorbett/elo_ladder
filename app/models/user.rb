@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090220031513
+# Schema version: 20090220032913
 #
 # Table name: users
 #
@@ -14,6 +14,7 @@
 #  current_login_at  :datetime
 #  last_login_ip     :string(255)
 #  current_login_ip  :string(255)
+#  rating            :integer         default(1600)
 #  created_at        :datetime
 #  updated_at        :datetime
 #
