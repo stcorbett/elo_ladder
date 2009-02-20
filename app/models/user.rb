@@ -28,5 +28,10 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   
   acts_as_authentic :login_field => :email
+
+
+  def expected_score_against(other)
+    (1 / (1 + 10**((other.rating - self.rating)/400.0))).to_f
+  end
   
 end

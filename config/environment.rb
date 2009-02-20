@@ -24,5 +24,6 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-shoulda', :lib => 'shoulda/rails', :source => "http://gems.github.com"
   config.gem 'authlogic'
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com'
+  config.gem 'jeremymcanally-matchy', :lib => 'matchy', :source => 'http://gems.github.com'
 
 end
