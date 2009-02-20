@@ -1,0 +1,26 @@
+!!!
+
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{"http-equiv".to_sym => "Content-Type", :content => "text/html;charset=utf-8"}
+    %title= @page_title ? "Elo Ladder | #{@page_title}" : "Military Travel Charity"
+    = stylesheet_link_tag ["blueprint/screen", "style"]
+    = stylesheet_link_tag "blueprint/print", :media => "print"
+    = stylesheet_link_tag "blueprint/ie" if request.env['HTTP_USER_AGENT'] =~ /MSIE/
+
+  %body
+    .container
+      = render :partial => 'layouts/header'
+      = render :partial => 'layouts/navigation'
+      
+      - if flash[:notice]
+        .span-24.last
+          .success= h flash[:notice]
+      - if flash[:error]
+        .span-24.last
+          .error= h flash[:error]
+      
+      #main-content.span-24.last
+        = yield
+      
+      = render :partial => 'layouts/footer'

@@ -1,1 +1,3 @@
 attr_accessible and serializable for models
+
+site name into config file
