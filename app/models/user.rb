@@ -22,7 +22,7 @@
 
 class User < ActiveRecord::Base
 
-  has_many :won_games, :class_name => "Game", :foreign_key => "winner_id"
+  has_many :won_games,  :class_name => "Game", :foreign_key => "winner_id"
   has_many :lost_games, :class_name => "Game", :foreign_key => "loser_id"
   
   validates_presence_of :name
@@ -30,14 +30,14 @@ class User < ActiveRecord::Base
   acts_as_authentic :login_field => :email
 
 
-  def expected_score_against(other)
-    (1 / (1 + 10**((other.rating - self.rating)/400.0))).to_f
+  def expected_score_against(opponent)
+    (1 / (1 + 10**((opponent.rating - self.rating)/400.0))).to_f
   end
   
-  def new_rating_against(other, win = true)
+  def new_rating_against(opponent, win = true)
     score = win ? 1 : 0
     k = self.rating > 2200 ? 16 : 32
-    (self.rating + k * (score - expected_score_against(other))).to_i
+    (self.rating + k * (score - expected_score_against(opponent))).to_i
   end
   
 end
