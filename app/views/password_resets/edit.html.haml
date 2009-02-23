@@ -1,6 +1,4 @@
-- @page_title = "Change Password"
-
-%h2 Change Password
+%h2= @page_title = "Change password"
  
 .span-9.colborder
   - form_for :user, @user, :url => {:action => :update, :id => @user.perishable_token}, :html => {:method => :put} do |f|

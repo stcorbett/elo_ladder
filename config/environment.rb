@@ -27,3 +27,5 @@ Rails::Initializer.run do |config|
   config.gem 'jeremymcanally-matchy',   :lib => 'matchy',        :source => 'http://gems.github.com'
 
 end
+
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"field-with-errors\">#{html_tag}</span>" }
