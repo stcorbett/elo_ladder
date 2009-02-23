@@ -12,4 +12,4 @@
       %td= h user.name
       %td= user.rating
       - if current_user
-        %td= "#{(current_user.expected_score_against(user) * 100).to_s[0..4]}%"
+        %td= "#{(current_user.expected_score_against(user) * 100).to_s[0..4]}%" unless current_user == user

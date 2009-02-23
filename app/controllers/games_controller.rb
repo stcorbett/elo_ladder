@@ -9,10 +9,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def edit
-    @game = Game.find(params[:id])
-  end
-
   def create
     @game = Game.new(params[:game])
 
