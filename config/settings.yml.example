@@ -1,0 +1,11 @@
+site_name: Your Site name
+url: localhost:3000
+email:
+  from_address: noreply@yourdomain.com
+  use_tls: true
+  smtp_address: smtp.gmail.com
+  smtp_port: 587
+  smtp_domain: yourdomain.com
+  smtp_authentication: plain
+  smtp_user_name: noreply@yourdomain.com
+  smtp_password: password

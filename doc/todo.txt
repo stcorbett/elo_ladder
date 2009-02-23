@@ -1,3 +1,16 @@
+password resets
+  views
+  mailer
+
+registration
+
+navigation
+
 attr_accessible and serializable for models
 
 site name into config file
+  url too - for password resets
+
+user name validations
+  length
+  format

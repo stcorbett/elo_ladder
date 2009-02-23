@@ -1,0 +1,20 @@
+- @page_title = "Change Password"
+
+%h2 Change Password
+ 
+.span-9.colborder
+  - form_for :user, @user, :url => {:action => :update, :id => @user.perishable_token}, :html => {:method => :put} do |f|
+    %p
+      = f.label :password
+      = error_messages @user, :password
+      %br
+      = f.password_field :password
+    %p
+      = f.label :password_confirmation
+      = error_messages @user, :password_confirmation
+      %br
+      = f.password_field :password_confirmation
+    %p= f.submit "Submit"
+
+.span-14.last
+  %p Select a new password by entering it into the form on the left.

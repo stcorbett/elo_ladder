@@ -3,13 +3,13 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{"http-equiv".to_sym => "Content-Type", :content => "text/html;charset=utf-8"}
-    %title= @page_title ? "Elo Ladder | #{@page_title}" : "Elo Ladder"
+    %title= @page_title ? "#{Settings.site_name} | #{@page_title}" : "#{Settings.site_name}"
     = stylesheet_link_tag ["blueprint/screen", "style"]
     = stylesheet_link_tag "blueprint/print", :media => "print"
     = stylesheet_link_tag "blueprint/ie" if request.env['HTTP_USER_AGENT'] =~ /MSIE/
 
   %body
-    .container
+    #wrapper.container
       = render :partial => 'layouts/header'
       = render :partial => 'layouts/navigation'
       

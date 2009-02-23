@@ -14,6 +14,7 @@
 #  current_login_at  :datetime
 #  last_login_ip     :string(255)
 #  current_login_ip  :string(255)
+#  perishable_token  :string(255)
 #  name              :string(255)
 #  rating            :integer         default(1600)
 #  created_at        :datetime
@@ -38,6 +39,11 @@ class User < ActiveRecord::Base
     score = win ? 1 : 0
     k = self.rating > 2200 ? 16 : 32
     (self.rating + k * (score - expected_score_against(other))).to_i
+  end
+  
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
   end
   
 end

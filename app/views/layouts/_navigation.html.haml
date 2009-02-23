@@ -1,0 +1,7 @@
+#navigation-area.span-24.last
+  %ul#navigation
+    - if current_user
+      Nothing yet
+    - else
+      = nav_link "Register", new_user_path, params, {:controller => "users", :action => "new"}
+      = nav_link "Log in", login_path, params, {:controller => "user_sessions", :action => "new"}

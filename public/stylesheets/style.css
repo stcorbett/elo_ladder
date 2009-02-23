@@ -1,0 +1,31 @@
+body, html {
+  background-color: #EBEBEB;
+}
+
+div#wrapper {
+  background-color: #FAF9F7;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+
+
+/* misc global */
+
+a {
+  text-decoration: none;
+}
+
+
+
+/* navigation */
+
+ul#navigation {
+  text-align: right;
+}
+
+ul#navigation li {
+  display: inline;
+  margin-left: 20px;
+  font-size: 1.1em;
+}

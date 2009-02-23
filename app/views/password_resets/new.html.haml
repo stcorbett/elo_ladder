@@ -1,0 +1,16 @@
+- @page_title = "Forgot password"
+
+%h2 Forgot password
+ 
+.span-9.colborder
+  - form_tag password_resets_path do
+    %p
+      %label Email address
+      %br
+      = text_field_tag :email, "", :style => "width: 217px"
+    %p= submit_tag "Submit"
+
+.span-14.last
+  %p Forgot your password? Enter your email address in the form to the left and we'll send you instructions for how to reset it.
+  
+- flash.discard
