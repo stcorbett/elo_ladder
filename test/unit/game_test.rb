@@ -11,6 +11,14 @@ class GameTest < ActiveSupport::TestCase
     should_belong_to :loser
     
     should_require_attributes :winner_id, :loser_id
+    
+    should "not allow match against self" do
+      user = Factory(:user)
+      game = Factory.build(:game, :winner => user, :loser => user)
+      
+      assert !game.valid?
+      assert game.errors["base"] == "cannot have a match with same winner and loser"
+    end
   end
   
   context "rating calculations" do

@@ -1,5 +1,16 @@
 class GamesController < ApplicationController
 
+  before_filter :require_user
+
+  def index
+    @games = Game.find :all, :conditions => ["winner_id = ? or loser_id = ?", current_user.id, current_user.id]
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @games }
+    end
+  end
+
   def new
     @game = Game.new
 
@@ -11,11 +22,12 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(params[:game])
+    @game.winner = current_user
 
     respond_to do |format|
       if @game.save
-        flash[:notice] = 'Game was successfully created.'
-        format.html { redirect_to(@game) }
+        flash[:notice] = 'Game was successfully recorded.'
+        format.html { redirect_to root_path }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
         format.html { render :action => "new" }
@@ -29,8 +41,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        flash[:notice] = 'Game was successfully updated.'
-        format.html { redirect_to(@game) }
+        flash[:notice] = 'Game was successfully contested.'
+        format.html { redirect_to games_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

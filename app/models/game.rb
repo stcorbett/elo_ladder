@@ -23,4 +23,8 @@ class Game < ActiveRecord::Base
     winner.save and loser.save
   end
   
+  def validate
+    self.errors.add_to_base("cannot have a match with same winner and loser") if self.winner == self.loser
+  end
+  
 end
