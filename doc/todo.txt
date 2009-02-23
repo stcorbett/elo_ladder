@@ -1,7 +1,3 @@
-password resets
-  views
-  mailer
-
 registration
 
 navigation
