@@ -1,7 +1,3 @@
-user name validations
-  length
-  format
-
 registration
 
 edit profile

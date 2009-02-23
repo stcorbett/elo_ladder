@@ -12,6 +12,7 @@ class UserTest < ActiveSupport::TestCase
 
     should_require_attributes :name
     should_require_unique_attributes :email
+    should_ensure_length_in_range :name, (4..25)
   end
   
   context "rating calculations" do

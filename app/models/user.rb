@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :lost_games, :class_name => "Game", :foreign_key => "loser_id"
   
   validates_presence_of :name
+  validates_length_of :name, :in => 4..25
   
   acts_as_authentic :login_field => :email
 
