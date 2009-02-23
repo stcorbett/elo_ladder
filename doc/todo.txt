@@ -1,5 +1,3 @@
-edit profile
-
 attr_accessible and serializable for models
 
 game controller
