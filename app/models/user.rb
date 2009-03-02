@@ -22,7 +22,8 @@
 #
 
 class User < ActiveRecord::Base
-
+  
+  has_many :games, :finder_sql => 'SELECT * FROM games WHERE (games.winner_id = #{self.id} OR games.loser_id = #{self.id})'
   has_many :won_games,  :class_name => "Game", :foreign_key => "winner_id"
   has_many :lost_games, :class_name => "Game", :foreign_key => "loser_id"
   
