@@ -30,3 +30,19 @@ Rails::Initializer.run do |config|
 end
 
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"field-with-errors\">#{html_tag}</span>" }
+
+config = YAML::load(File.open("#{RAILS_ROOT}/config/settings.yml"))
+
+SITE_NAME    = config["site_name"]
+SITE_URL     = config["url"]
+FROM_ADDRESS = config["email"]["from_address"]
+
+ActionMailer::Base.smtp_settings = {
+  :tls => config["email"]["use_tls"],
+  :address => config["email"]["smtp_address"],
+  :port => config["email"]["smtp_port"],
+  :domain => config["email"]["smtp_domain"],
+  :authentication => config["email"]["smtp_authentication"].to_sym,
+  :user_name => config["email"]["smtp_user_name"],
+  :password => config["email"]["smtp_password"]
+}

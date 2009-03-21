@@ -7,7 +7,6 @@ class UserTest < ActiveSupport::TestCase
       @user = Factory(:user)
     end
     
-    should_have_many :games
     should_have_many :won_games
     should_have_many :lost_games
 

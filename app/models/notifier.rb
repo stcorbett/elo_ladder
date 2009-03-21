@@ -1,6 +1,6 @@
 class Notifier < ActionMailer::Base
 
-  default_url_options[:host] = Settings.url
+  default_url_options[:host] = SITE_URL
 
   def password_reset_instructions(user)
     setup
@@ -14,19 +14,8 @@ class Notifier < ActionMailer::Base
   protected
   
   def setup
-    @from = Settings.email["from_address"]
-    
+    @from = FROM_ADDRESS
     content_type "text/html"
-    
-    ActionMailer::Base.smtp_settings = {
-      :tls => Settings.email["use_tls"],
-      :address => Settings.email["smtp_address"],
-      :port => Settings.email["smtp_port"],
-      :domain => Settings.email["smtp_domain"],
-      :authentication => Settings.email["smtp_authentication"].to_sym,
-      :user_name => Settings.email["smtp_user_name"],
-      :password => Settings.email["smtp_password"]
-    }
   end
 
 end
