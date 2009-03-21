@@ -30,6 +30,7 @@ Rails::Initializer.run do |config|
 end
 
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"field-with-errors\">#{html_tag}</span>" }
+ActionView::Base.default_form_builder = CustomFormBuilder
 
 config = YAML::load(File.open("#{RAILS_ROOT}/config/settings.yml"))
 

@@ -8,7 +8,6 @@
       = "#{current_user.name.split(' ')[0]} (#{current_user.email})"
     %p
       = f.label :loser_id, "Loser"
-      = error_messages @game, :loser_id
       %br
       = f.select :loser_id, [["",""]] + User.all.reject{|u| u == current_user}.map{|u| ["#{u.name.split(' ')[0]} (#{u.email})", u.id]}
     %p= f.submit "Submit"

@@ -2,22 +2,18 @@
 - form_for @user do |f|
   %p
     = f.label :name, "Name"
-    = error_messages @user, :name
     %br
     = f.text_field :name
   %p
     = f.label :email, "Email address"
-    = error_messages @user, :email
     %br
     = f.text_field :email
   %p
     = f.label :password
-    = error_messages @user, :password
     %br
     = f.password_field :password
   %p
     = f.label :password_confirmation
-    = error_messages @user, :password_confirmation
     %br
     = f.password_field :password_confirmation
   %p= f.submit "Register"

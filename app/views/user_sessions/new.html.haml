@@ -3,12 +3,10 @@
   - form_for @user_session do |f|
     %p
       = f.label :email, "Email address"
-      = error_messages @user_session, :email
       %br
       = f.text_field :email
     %p
       = f.label :password
-      = error_messages @user_session, :password
       %br
       = f.password_field :password
     %p= f.submit "Log in"
