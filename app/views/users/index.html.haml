@@ -1,0 +1,21 @@
+- single_column do
+
+  - if @users.empty?
+
+    %p{:style => 'text-align: center; padding: 100px 0;'}
+      %big= "Welcome to Elo Ladder. #{link_to 'Sign up', register_path} to get started."
+
+  - else
+
+    %table#ranking-table
+      %tr
+        %th
+        %th Rating
+        - if current_user
+          %th Odds against
+      - for user in @users
+        %tr
+          %td= link_to h(user.name), user
+          %td= user.rating
+          - if current_user
+            %td= "#{(current_user.expected_score_against(user) * 100).to_s[0..4]}%" unless current_user == user

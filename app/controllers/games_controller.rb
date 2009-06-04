@@ -21,7 +21,9 @@ class GamesController < ApplicationController
         format.html { redirect_to root_path }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
-        format.html { render :action => "new" }
+        raise @game.errors.collect.inspect
+        flash[:error] = 'Game could not be recorded.'
+        format.html { redirect_to root_path }
         format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
       end
     end

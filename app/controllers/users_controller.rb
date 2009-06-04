@@ -3,6 +3,15 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
   before_filter :require_no_user, :only => [:new, :create]
   
+  def index
+    @users = User.find :all, :order => "rating DESC"
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
+  
   def show
     @user = User.find(params[:id])
 

@@ -3,7 +3,7 @@
 %html{:xmlns => 'http://www.w3.org/1999/xhtml'}
   %head
     %meta{'http-equiv'.to_sym => 'Content-Type', :content => 'text/html;charset=utf-8'}
-    %title= @page_title ? "CHANGEME | #{@page_title}" : 'CHANGEME'
+    %title= @page_title ? "Elo Ladder | #{@page_title}" : 'Elo Ladder'
     = stylesheet_link_tag ['blueprint/screen', 'buttons', 'style']
     = stylesheet_link_tag 'blueprint/print', :media => "print"
     = stylesheet_link_tag 'blueprint/ie' if request.env['HTTP_USER_AGENT'] =~ /MSIE/

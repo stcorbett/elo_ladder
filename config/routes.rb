@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.root :controller => 'welcome'
+  map.root :controller => 'users'
 
   map.resources :users
+  map.resources :games
+  
   map.resources :user_sessions
   map.resources :password_resets
   

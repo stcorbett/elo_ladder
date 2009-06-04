@@ -29,14 +29,15 @@ class User < ActiveRecord::Base
   has_many :lost_games, :class_name => "Game", :foreign_key => "loser_id"
 
   validates_presence_of :name
+  validates_uniqueness_of :name
   validates_length_of :name, :in => 4..25
 
   acts_as_authentic do |c|
     c.validates_format_of_email_field_options = { :with => Authlogic::Regex.email, :message => 'is invalid' }
   end
  
-  attr_accessible :email, :password, :password_confirmation
-  attr_serializable :id, :updated_at, :created_at
+  attr_accessible :email, :password, :password_confirmation, :name
+  attr_serializable :id, :name, :updated_at, :created_at
   
   def expected_score_against(opponent)
     (1 / (1 + 10**((opponent.rating - self.rating)/400.0))).to_f
@@ -53,10 +54,13 @@ class User < ActiveRecord::Base
     Notifier.deliver_password_reset_instructions(self)
   end
   
-  
   def deliver_password_reset_instructions!(reset_url)
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self, reset_url)
+  end
+  
+  def to_param
+    "#{id}-#{name.downcase.gsub(/[^[:alnum:]^ ]/, '').gsub(' ', '-')}"[0..75]
   end
 
 end

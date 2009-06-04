@@ -1,0 +1,8 @@
+#navigation-area.span-24.last
+  %ul#navigation
+    - if current_user
+      = nav_link "Account", profile_path, {:controller => "users", :action => "edit"}
+      = nav_link "Log out", logout_path, {:controller => "user_sessions", :action => "destroy"}
+    - else
+      = nav_link "Register", new_user_path, {:controller => "users", :action => "new"}
+      = nav_link "Log in", login_path, {:controller => "user_sessions", :action => "new"}
