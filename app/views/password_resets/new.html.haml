@@ -1,0 +1,12 @@
+- single_column do
+  
+  %h1= @page_title = "Forgot Password"
+
+  %p To reset your password, simply enter your email address in the box below.
+
+  - form_tag password_resets_path do
+    %p
+      %label Email address
+      %br
+      = text_field_tag :email
+    = button 'Submit'

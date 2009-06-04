@@ -1,0 +1,8 @@
+- single_column do
+  
+  %h1= @page_title = 'Change Password'
+ 
+  - form_for :user, @user, :url => {:action => :update, :id => @user.perishable_token}, :html => {:method => :put} do |f|
+    = f.input :password_field, :password
+    = f.input :password_field, :password_confirmation
+    = button 'Submit'

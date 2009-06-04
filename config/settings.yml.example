@@ -1,0 +1,32 @@
+development:
+  mailer:
+    from_address: email@domain.com
+    use_tls: true
+    smtp_address: smtp.domain.com
+    smtp_port: 587
+    smtp_domain: domain.com
+    smtp_authentication: plain
+    smtp_user_name: email@domain.com
+    smtp_password: password
+    
+production:
+  mailer:
+    from_address: email@domain.com
+    use_tls: true
+    smtp_address: smtp.domain.com
+    smtp_port: 587
+    smtp_domain: domain.com
+    smtp_authentication: plain
+    smtp_user_name: email@domain.com
+    smtp_password: password
+    
+test:
+  mailer:
+    from_address: email@domain.com
+    use_tls: true
+    smtp_address: smtp.domain.com
+    smtp_port: 587
+    smtp_domain: domain.com
+    smtp_authentication: plain
+    smtp_user_name: email@domain.com
+    smtp_password: password

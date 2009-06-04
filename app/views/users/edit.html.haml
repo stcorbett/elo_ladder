@@ -1,0 +1,9 @@
+- single_column do
+  
+  %h1= @page_title = 'Edit Profile'
+
+  - form_for @user do |f|
+    = f.input :text_field, :email, 'Email address'
+    = f.input :password_field, :password
+    = f.input :password_field, :password_confirmation
+    = button 'Submit'

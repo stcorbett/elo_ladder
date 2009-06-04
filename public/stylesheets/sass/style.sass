@@ -1,0 +1,99 @@
+!light =     #BFFF9F
+!med_light = #95EF68
+!med =       #79DF45
+!med_dark =  #5FCF26
+!dark =      #40BF00
+
+!contrast_light = #EF9C59 
+!contrast_dark =  #DF721B
+
+!links = #007BBF
+
+// layout
+
+#main-content
+  :clear both
+  :background-color white
+
+// misc
+
+a
+  :color = !links
+  :text-decoration none
+
+body, html
+  :background-color #ECEEEF 
+
+.box
+  :padding 10px
+  :margin 0
+  :background-color white
+
+.dark
+  :color = !dark
+
+.lowride
+  :margin-bottom 0
+  :padding-bottom 0
+
+.downcase
+  :text-transform lowercase
+
+.invisible
+  :display none
+
+.float-left
+  :float left
+
+.float-right
+  :float right
+
+// forms
+  
+input,
+textarea
+  :font-size 12px
+  :padding 4px 2px
+  :border solid 1px #aacfe4
+  :color #031a28
+  :margin-top 0
+
+.label-with-errors
+  :color #F00
+
+.field-with-errors
+  input,
+  textarea
+    :border 1px solid #e3aaaa
+    :background-color #f9e9e9
+      
+      
+// pagination
+
+.pagination
+  :padding 10px 0 15px 0
+  :margin 3px 3px 3px 0
+  :margin-top 20px
+  :clear both
+
+  a
+    :padding 2px 5px 2px 5px
+    :margin 2px 4px 2px 0
+    :border = 1px solid !contrast_dark
+    :text-decoration none
+    :color = !contrast_dark
+
+  a:hover
+    :color = !contrast_light
+    :border = 1px solid !contrast_light
+
+  span.current
+    :padding 2px 5px 2px 5px
+    :margin 2px 4px 2px 0
+    :border = 1px solid !contrast_dark
+    :font-weight bold
+    :color #fff
+    :background-color = !contrast_dark
+
+  span.disabled
+    :display none
