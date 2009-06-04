@@ -14,7 +14,7 @@
         - if current_user
           %th Odds against
       - for user in @users
-        %tr
+        %tr{:class => cycle('odd-row', 'even-row')}
           %td= link_to h(user.name), user
           %td= user.rating
           - if current_user
