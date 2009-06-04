@@ -1,0 +1,9 @@
+---
+cwd: /var/www/apps/elo_ladder/current
+port: "9000"
+environment: production
+pid_file: tmp/pids/mongrel.pid
+log_file: log/mongrel.log
+servers: 1
+user: mongrel_sbucks
+group: app_sbucks
