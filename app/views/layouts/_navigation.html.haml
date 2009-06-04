@@ -1,9 +1,0 @@
-#navigation-area.span-24.last
-  %ul#navigation
-    - if current_user
-      = nav_link "Record a Match", new_game_path, params, {:controller => "games", :action => "new"}
-      = nav_link "Account", edit_account_path, params, {:controller => "users", :action => "edit"}
-      = nav_link "Log out", logout_path, params, {:controller => "user_sessions", :action => "destroy"}
-    - else
-      = nav_link "Register", new_user_path, params, {:controller => "users", :action => "new"}
-      = nav_link "Log in", login_path, params, {:controller => "user_sessions", :action => "new"}
