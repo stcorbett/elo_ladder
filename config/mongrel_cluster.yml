@@ -1,5 +1,5 @@
 ---
-cwd: /var/www/apps/elo_ladder/current
+cwd: /var/www/apps/elo_ladder
 port: "9000"
 environment: production
 pid_file: tmp/pids/mongrel.pid
