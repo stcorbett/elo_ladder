@@ -5,5 +5,5 @@ environment: production
 pid_file: tmp/pids/mongrel.pid
 log_file: log/mongrel.log
 servers: 1
-user: mongrel_sbucks
-group: app_sbucks
+user: deploy
+group: users
