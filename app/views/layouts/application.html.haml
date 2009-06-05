@@ -7,6 +7,7 @@
     = stylesheet_link_tag ['blueprint/screen', 'buttons', 'style']
     = stylesheet_link_tag 'blueprint/print', :media => "print"
     = stylesheet_link_tag 'blueprint/ie' if request.env['HTTP_USER_AGENT'] =~ /MSIE/
+	= stylesheet_link_tag 'elo_ladder'
     = javascript_include_tag :defaults
 
   %body
