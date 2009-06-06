@@ -13,9 +13,13 @@
         %th Rating
         - if current_user
           %th Odds against
+          %th Wins-Losses
+        - else
+          %th Win-Lose
       - for user in @users
         %tr{:class => cycle('odd-row', 'even-row')}
           %td= link_to h(user.name), user
           %td= user.rating
           - if current_user
             %td= "#{(current_user.expected_score_against(user) * 100).to_s[0..4]}%" unless current_user == user
+          %td= win_lose_helper(current_user, user)

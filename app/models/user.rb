@@ -62,5 +62,13 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{name.downcase.gsub(/[^[:alnum:]^ ]/, '').gsub(' ', '-')}"[0..75]
   end
+  
+  def wins_against(other_user)
+    Game.count(:conditions => "games.winner_id = #{self.id} AND games.loser_id = #{other_user.id}" )
+  end
+  
+  def losses_against(other_user)
+    Game.count(:conditions => "games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}" )
+  end
 
 end
