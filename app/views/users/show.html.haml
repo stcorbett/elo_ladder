@@ -3,7 +3,19 @@
   - if current_user and current_user != @user
     .float-right
       = button "Record a Victory against #{h(@user.name)}", :type => :positive, :link_to => games_path(:game => {:winner_id => current_user.id, :loser_id => @user.id}), :method => :create, :confirm => "Are you sure you want to record a victory against #{h(@user.name)}?"
+      = button "Record a Loss against #{h(@user.name)}", :type => :negative, :link_to => games_path(:game => {:winner_id => @user.id, :loser_id => current_user.id }), :method => :create, :confirm => "Are you sure you want to record a loss against #{h(@user.name)}?"
   
   %h1= @page_title = h(@user.name)
+  
+  %table#competitors-table
+    %tr
+      %th
+      %th Wins-Losses
+      %th Last Played
+      -@user.competitors.each do |competitor|
+        %tr{:class => cycle('odd-row', 'even-row')}
+          %td= link_to h(competitor.name), competitor
+          %td= "#{record_of(@user, competitor)}"
+          %td= "#{last_game_between(@user, competitor)}"
 
   .clear

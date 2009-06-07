@@ -63,12 +63,52 @@ class User < ActiveRecord::Base
     "#{id}-#{name.downcase.gsub(/[^[:alnum:]^ ]/, '').gsub(' ', '-')}"[0..75]
   end
   
-  def wins_against(other_user)
+  def num_wins_against(other_user)
     Game.count(:conditions => "games.winner_id = #{self.id} AND games.loser_id = #{other_user.id}" )
   end
   
-  def losses_against(other_user)
+  def num_losses_against(other_user)
     Game.count(:conditions => "games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}" )
+  end
+  
+  def num_games_against(other_user)
+    Game.count(  :conditions => " games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}
+                                  OR
+                                  games.winner_id = #{self.id} AND games.loser_id = #{other_user.id} "
+              )
+  end
+  
+  def wins_against(other_user)
+    Game.find(:all, :conditions => "games.winner_id = #{self.id} AND games.loser_id = #{other_user.id}", :order => "created_at DESC" )
+  end
+  
+  def losses_against(other_user)
+    Game.find(:all, :conditions => "games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}", :order => "created_at DESC" )
+  end
+  
+  def games_against(other_user)
+    Game.find(  :all,
+                :order => "created_at DESC",
+                :conditions => "games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}
+                                OR
+                                games.winner_id = #{self.id} AND games.loser_id = #{other_user.id} "
+              )
+  end
+  
+  def last_game_against(other_user)
+    Game.find(  :first,
+                :order => "created_at DESC",
+                :conditions => "games.winner_id = #{other_user.id} AND games.loser_id = #{self.id}
+                                OR
+                                games.winner_id = #{self.id} AND games.loser_id = #{other_user.id} "
+              )
+  end
+  
+  def competitors
+    user = self
+    uids = user.games.collect{|g| user.id == g.winner_id ? g.loser_id : g.winner_id}.uniq
+    uids.sort!{|a,b| user.num_games_against(User.find( a)) <=> user.num_games_against(User.find( b)) }.reverse!
+    User.find uids
   end
 
 end
