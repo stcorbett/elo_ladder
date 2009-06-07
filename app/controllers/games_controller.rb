@@ -13,7 +13,6 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(params[:game])
-    @game.winner = current_user
 
     respond_to do |format|
       if @game.save
